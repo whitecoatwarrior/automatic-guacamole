@@ -1,0 +1,2289 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><meta name='viewport' content='width=device-width, initial-scale=1'/><meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WHITE COAT WARRIORS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* All CSS styles remain the same as in the original file */
+        :root {
+            --primary-blue: #1a56db;
+            --secondary-blue: #0ea5e9;
+            --dark-blue: #1e3a8a;
+            --light-blue: #dbeafe;
+            --accent-green: #10b981;
+            --accent-orange: #f59e0b;
+            --accent-red: #ef4444;
+            --accent-purple: #8b5cf6;
+            --accent-pink: #ec4899;
+            --accent-teal: #14b8a6;
+            --accent-yellow: #fbbf24;
+            --accent-amber: #f59e0b;
+            --vibrant-blue: #3b82f6;
+            --vibrant-green: #22c55e;
+            --vibrant-purple: #a855f7;
+            --vibrant-pink: #e879f9;
+            --gradient-blue: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            --gradient-green: linear-gradient(135deg, var(--accent-green), #34d399);
+            --gradient-orange: linear-gradient(135deg, var(--accent-orange), #f97316);
+            --gradient-red: linear-gradient(135deg, var(--accent-red), #f87171);
+            --gradient-purple: linear-gradient(135deg, var(--accent-purple), #a78bfa);
+            --gradient-pink: linear-gradient(135deg, var(--accent-pink), #f472b6);
+            --gradient-teal: linear-gradient(135deg, var(--accent-teal), #2dd4bf);
+            --gradient-yellow: linear-gradient(135deg, var(--accent-yellow), #f59e0b);
+            --gradient-vibrant: linear-gradient(135deg, #4f46e5, #7c3aed, #ec4899);
+            --shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 2px 5px rgba(0, 0, 0, 0.08);
+            --shadow-xl: 0 5px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 6px;
+            color: #1e3a8a;
+            font-size: 8.25px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 9px;
+        }
+
+        .logo h1 {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--dark-blue);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.08);
+            margin-bottom: 1.5px;
+            background: var(--gradient-vibrant);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo p {
+            color: var(--primary-blue);
+            font-weight: 600;
+            font-size: 0.525rem;
+        }
+
+        .page {
+            background: white;
+            border-radius: 9px;
+            padding: 9px;
+            box-shadow: var(--shadow-xl);
+            width: 100%;
+            display: none;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+            backdrop-filter: blur(10px);
+        }
+
+        .active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .promo-banner {
+            background: var(--gradient-vibrant);
+            color: white;
+            padding: 11.25px;
+            border-radius: 7.5px;
+            margin-bottom: 11.25px;
+            text-align: center;
+            font-size: 0.45rem;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promo-banner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+            z-index: 1;
+        }
+
+        .promo-banner h2 {
+            font-size: 0.675rem;
+            margin-bottom: 6px;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 2;
+        }
+
+        .promo-banner p {
+            line-height: 1.4;
+            text-align: justify;
+            position: relative;
+            z-index: 2;
+        }
+
+        .form-group {
+            margin-bottom: 6px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 1.5px;
+            font-weight: 600;
+            color: var(--dark-blue);
+            font-size: 0.525rem;
+        }
+
+        .form-input, .form-select {
+            width: 100%;
+            padding: 4.5px 6.75px;
+            border: 1.5px solid var(--light-blue);
+            border-radius: 3.75px;
+            font-size: 0.525rem;
+            background: #f8fafc;
+            transition: all 0.2s;
+        }
+
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 2px rgba(26, 86, 219, 0.15);
+        }
+
+        .input-container {
+            position: relative;
+        }
+
+        .password-container .form-input {
+            padding-right: 22.5px;
+        }
+
+        .input-icon {
+            position: absolute;
+            right: 7.5px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-blue);
+            font-size: 0.525rem;
+            cursor: pointer;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4.5px 7.5px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.525rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            gap: 3px;
+            width: 100%;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: var(--gradient-blue);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(26, 86, 219, 0.2);
+        }
+
+        .btn-contact {
+            background: var(--gradient-green);
+            color: white;
+        }
+
+        .btn-contact:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(16, 185, 129, 0.2);
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(37, 211, 102, 0.2);
+        }
+
+        .btn-purple {
+            background: var(--gradient-purple);
+            color: white;
+        }
+
+        .btn-purple:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(139, 92, 246, 0.2);
+        }
+
+        .btn-red {
+            background: var(--gradient-red);
+            color: white;
+        }
+
+        .btn-red:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(239, 68, 68, 0.2);
+        }
+
+        .btn-orange {
+            background: var(--gradient-orange);
+            color: white;
+        }
+
+        .btn-orange:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(245, 158, 11, 0.2);
+        }
+
+        .error-box {
+            background: #fee2e2;
+            color: var(--accent-red);
+            padding: 3.75px 5.25px;
+            border-radius: 2.25px;
+            margin-top: 4.5px;
+            display: none;
+            font-weight: 600;
+            font-size: 0.525rem;
+            border-left: 2.25px solid var(--accent-red);
+        }
+
+        .success-box {
+            background: #d1fae5;
+            color: var(--accent-green);
+            padding: 3.75px 5.25px;
+            border-radius: 2.25px;
+            margin-top: 4.5px;
+            display: none;
+            font-weight: 600;
+            font-size: 0.525rem;
+            border-left: 2.25px solid var(--accent-green);
+        }
+
+        .notification-box {
+            background: #fef3c7;
+            color: #d97706;
+            padding: 7.5px;
+            border-radius: 4.5px;
+            margin-top: 7.5px;
+            font-weight: 600;
+            font-size: 0.525rem;
+            text-align: center;
+            border-left: 3px solid #f59e0b;
+        }
+
+        .quiz-notification {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            background: white;
+            padding: 11.25px;
+            border-radius: 7.5px;
+            box-shadow: var(--shadow-xl);
+            z-index: 1000;
+            display: none;
+            max-width: 225px;
+            border-left: 3.75px solid var(--accent-green);
+            animation: slideInRight 0.3s ease;
+            transform: translateX(100%);
+        }
+
+        .quiz-notification.show {
+            display: block;
+            transform: translateX(0);
+        }
+
+        .quiz-notification.warning {
+            border-left-color: var(--accent-orange);
+        }
+
+        .quiz-notification.error {
+            border-left-color: var(--accent-red);
+        }
+
+        .quiz-notification-content {
+            display: flex;
+            flex-direction: column;
+            gap: 7.5px;
+        }
+
+        .quiz-notification-title {
+            font-weight: 700;
+            font-size: 0.6rem;
+            color: var(--dark-blue);
+        }
+
+        .quiz-notification-message {
+            font-size: 0.525rem;
+            color: #4b5563;
+        }
+
+        .quiz-notification-actions {
+            display: flex;
+            gap: 6px;
+            justify-content: flex-end;
+        }
+
+        .quiz-notification-btn {
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-size: 0.4875rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+
+        .quiz-notification-btn.primary {
+            background: var(--gradient-blue);
+            color: white;
+        }
+
+        .quiz-notification-btn.secondary {
+            background: #f3f4f6;
+            color: #4b5563;
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+
+        .main-page-buttons {
+            display: grid;
+            gap: 6px;
+            margin-top: 9px;
+        }
+
+        .quiz-access-section {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            margin-top: 9px;
+        }
+
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 6px;
+            padding-bottom: 4.5px;
+            border-bottom: 1.5px solid var(--light-blue);
+        }
+
+        .quiz-title-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2.25px;
+            width: 80%;
+        }
+
+        .quiz-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+            font-size: 0.525rem;
+            color: var(--dark-blue);
+            font-weight: 600;
+        }
+
+        .timer-container {
+            display: flex;
+            gap: 4.5px;
+            justify-content: flex-end;
+            width: 100%;
+        }
+
+        .timer, .question-timer {
+            background: var(--gradient-blue);
+            color: white;
+            padding: 2.25px 4.5px;
+            border-radius: 7.5px;
+            font-weight: 700;
+            font-size: 0.525rem;
+            box-shadow: var(--shadow);
+            white-space: nowrap;
+        }
+
+        .timer.total-timer {
+            background: var(--gradient-orange);
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 4.5px;
+            background: #e5e7eb;
+            border-radius: 2.25px;
+            overflow: hidden;
+            margin-bottom: 6px;
+            box-shadow: var(--shadow);
+        }
+
+        .progress-bar {
+            height: 100%;
+            border-radius: 2.25px;
+            transition: width 0.4s ease;
+            background: var(--gradient-vibrant);
+        }
+
+        .question-nav {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(10.5px, 1fr));
+            gap: 2.25px;
+            margin-bottom: 6px;
+        }
+
+        .question-nav-item {
+            width: 10.5px;
+            height: 10.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 2.25px;
+            font-weight: 700;
+            font-size: 0.375rem;
+            cursor: pointer;
+            background: white;
+            border: 1.5px solid var(--light-blue);
+            transition: all 0.2s;
+        }
+
+        .question-nav-item.current {
+            background: var(--gradient-vibrant);
+            color: white;
+            border-color: var(--primary-blue);
+            transform: scale(1.1);
+        }
+
+        .question-nav-item.solved {
+            background: var(--gradient-green);
+            color: white;
+            border-color: var(--accent-green);
+        }
+
+        .question-nav-item.visited {
+            background: var(--gradient-orange);
+            color: white;
+            border-color: var(--accent-orange);
+        }
+
+        .question-container {
+            margin-bottom: 6px;
+        }
+
+        .question-text {
+            font-size: 0.5625rem;
+            font-weight: 700;
+            margin-bottom: 4.5px;
+            color: var(--dark-blue);
+        }
+
+        .options-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3px;
+            margin-bottom: 6px;
+        }
+
+        .option {
+            padding: 3.75px 6px;
+            border: 1.5px solid var(--light-blue);
+            border-radius: 3.75px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 500;
+            background: #f8fafc;
+            font-size: 0.525rem;
+            position: relative;
+        }
+
+        .option:hover {
+            border-color: var(--primary-blue);
+            background: #e0f2fe;
+            transform: translateY(-1px);
+        }
+
+        .option.selected {
+            border-color: var(--primary-blue);
+            background: #dbeafe;
+        }
+
+        .option.correct {
+            border-color: var(--accent-green);
+            background: #d1fae5;
+        }
+
+        .option.incorrect {
+            border-color: var(--accent-red);
+            background: #fee2e2;
+        }
+
+        .option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .reasoning {
+            background: #f8fafc;
+            border-radius: 3.75px;
+            padding: 6px;
+            margin-top: 6px;
+            display: none;
+            border-left: 2.25px solid var(--primary-blue);
+            font-size: 0.525rem;
+        }
+
+        .reasoning-title {
+            font-weight: 700;
+            margin-bottom: 3px;
+            color: var(--dark-blue);
+            font-size: 0.5625rem;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            margin-top: 9px;
+        }
+
+        .nav-btn {
+            padding: 3.75px 5.25px;
+            border-radius: 3.75px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+            font-size: 0.525rem;
+            display: flex;
+            align-items: center;
+            gap: 2.25px;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .btn-back {
+            background: linear-gradient(135deg, #3b82f6, #60a5fa);
+            color: white;
+        }
+
+        .btn-next {
+            background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+            color: white;
+        }
+
+        .btn-reasoning {
+            background: var(--gradient-purple);
+            color: white;
+        }
+
+        .btn-reasoning.disabled {
+            background: #dc3545;
+            color: white;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .btn-reasoning.disabled:hover {
+            background: #dc3545;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .btn-submit {
+            background: var(--gradient-green);
+            color: white;
+        }
+
+        .results-header-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 3.75px;
+            margin-bottom: 9px;
+        }
+
+        .results-header-buttons .btn {
+            padding: 3px 4.5px;
+            font-size: 0.4875rem;
+            width: 100%;
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, #f8fafc, #e0f2fe);
+            border-radius: 6px;
+            padding: 9px;
+            text-align: center;
+            margin-bottom: 9px;
+            box-shadow: var(--shadow);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .result-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-vibrant);
+        }
+
+        .result-card h2 {
+            font-size: 0.675rem;
+            margin-bottom: 6px;
+            color: var(--dark-blue);
+        }
+
+        .result-card table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.525rem;
+            margin-top: 6px;
+            box-shadow: var(--shadow);
+        }
+
+        .result-card th, .result-card td {
+            padding: 3.75px;
+            border: 1px solid #dbeafe;
+            text-align: left;
+        }
+
+        .result-card th {
+            background-color: var(--light-blue);
+            font-weight: 600;
+        }
+
+        .result-card td {
+            background-color: #f8fafc;
+        }
+
+        .result-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 4.5px;
+            margin-top: 9px;
+        }
+
+        .all-mcqs-list {
+            display: flex;
+            flex-direction: column;
+            gap: 11.25px;
+        }
+
+        .all-mcq-item {
+            padding: 7.5px;
+            border: 1px solid var(--light-blue);
+            border-radius: 6px;
+            background: #f8fafc;
+            position: relative;
+        }
+
+        .all-mcq-item .question-text {
+            color: var(--dark-blue);
+            font-size: 0.6rem;
+            font-weight: 700;
+        }
+
+        .all-mcq-options {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            margin-top: 4.5px;
+        }
+
+        .all-mcq-option {
+            font-size: 0.525rem;
+            padding: 3px 4.5px;
+            border-radius: 3px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .all-mcq-option.correct {
+            background: #d1fae5;
+            color: var(--accent-green);
+            font-weight: 600;
+            border-color: #a7f3d0;
+        }
+
+        .all-mcq-reasoning {
+            margin-top: 6px;
+            font-size: 0.525rem;
+            color: #4b5563;
+            padding: 6px;
+            background: #f8fafc;
+            border-radius: 3px;
+            border-left: 2.25px solid var(--primary-blue);
+        }
+
+        .all-mcq-reasoning strong {
+            color: var(--dark-blue);
+        }
+
+        .quick-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 9px;
+            gap: 6px;
+        }
+
+        .stat-card {
+            flex: 1;
+            background: white;
+            border-radius: 4.5px;
+            padding: 6px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border-top: 2px solid var(--primary-blue);
+        }
+
+        .stat-card.correct {
+            border-top-color: var(--accent-green);
+        }
+
+        .stat-card.incorrect {
+            border-top-color: var(--accent-red);
+        }
+
+        .stat-card.unanswered {
+            border-top-color: var(--accent-orange);
+        }
+
+        .stat-value {
+            font-size: 0.9rem;
+            font-weight: 800;
+            margin-bottom: 1.5px;
+        }
+
+        .stat-label {
+            font-size: 0.4875rem;
+            font-weight: 600;
+            color: #6b7280;
+        }
+
+        .performance-meter {
+            width: 100%;
+            height: 6px;
+            background: #e5e7eb;
+            border-radius: 3px;
+            overflow: hidden;
+            margin: 6px 0;
+        }
+
+        .performance-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 0.4s ease;
+            background: var(--gradient-vibrant);
+        }
+
+        @media (max-width: 768px) {
+            .quiz-header {
+                flex-direction: column;
+                gap: 4.5px;
+                align-items: flex-start;
+            }
+            
+            .navigation-buttons {
+                grid-template-columns: 1fr;
+            }
+            
+            .timer-container {
+                position: relative;
+                top: auto;
+                right: auto;
+                margin-top: 3.75px;
+                justify-content: flex-end;
+                width: 100%;
+            }
+            
+            .quiz-title-container {
+                width: 100%;
+            }
+            
+            .result-actions {
+                flex-direction: column;
+            }
+            
+            .promo-banner {
+                padding: 9px;
+            }
+            
+            .promo-banner h2 {
+                font-size: 0.6rem;
+            }
+            
+            .promo-banner p {
+                font-size: 0.4125rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-notification" id="quiz-notification">
+        <div class="quiz-notification-content">
+            <div class="quiz-notification-title" id="notification-title">Quiz Progress Found</div>
+            <div class="quiz-notification-message" id="notification-message">You have an unfinished quiz. Do you want to continue where you left off?</div>
+            <div class="quiz-notification-actions">
+                <button class="quiz-notification-btn secondary" id="notification-no">Start Fresh</button>
+                <button class="quiz-notification-btn primary" id="notification-yes">Continue</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="logo">
+            <h1>WHITE COAT WARRIORS</h1>
+            <p>Excellence in Educational Assessment</p>
+        </div>
+
+        <div id="signin-page" class="page active">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+            
+            <h2><i class="fas fa-lock"></i> Access Test</h2>
+            <p>Sign in or use your access code</p>
+            
+            <div class="main-page-buttons">
+                <button class="btn btn-primary" onclick="showQuizAccessForm()">
+                    <i class="fas fa-key"></i>
+                    <span>Sign In with Quiz Access Code</span>
+                </button>
+                <button class="btn btn-primary" onclick="showRegistrationPage()">
+                    <i class="fas fa-user-plus"></i>
+                    <span>Sign Up to Get Quiz Access</span>
+                </button>
+                <button class="btn btn-purple" onclick="showDeveloperAccessForm()">
+                    <i class="fas fa-code"></i>
+                    <span>Developer Access</span>
+                </button>
+            </div>
+            
+            <div id="developer-access-form" class="quiz-access-section">
+                <h3><i class="fas fa-user-secret"></i> Developer Login</h3>
+                <div class="password-container input-container">
+                    <input type="password" id="developerPassword" class="form-input" placeholder="Enter the Developer Password">
+                    <i class="fas fa-eye-slash input-icon" id="toggleDeveloperPassword"></i>
+                </div>
+                <button class="btn btn-purple" onclick="checkDeveloperPassword()">
+                    <span>Log In</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <div id="dev-error-box" class="error-box">
+                    <i class="fas fa-exclamation-circle"></i> Invalid developer password.
+                </div>
+            </div>
+            
+            <div id="quiz-access-form" class="quiz-access-section">
+                <h3><i class="fas fa-key"></i> Enter Quiz Access Code</h3>
+                <div class="password-container input-container">
+                    <input type="password" id="quizAccessCode" class="form-input" placeholder="Enter your 12-Digit Quiz Access Code here">
+                    <i class="fas fa-eye-slash input-icon" id="toggleQuizAccessCode"></i>
+                </div>
+                <button class="btn btn-primary" onclick="accessQuiz(document.getElementById('quizAccessCode').value)">
+                    <span>Access Quiz</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <div id="quiz-error-box" class="error-box">
+                    <i class="fas fa-exclamation-circle"></i> Invalid quiz access code.
+                </div>
+            </div>
+            
+        </div>
+
+        <div id="registration-page" class="page">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+            
+            <h2><i class="fas fa-user-edit"></i> Student Registration</h2>
+            <p>Please provide your details to register</p>
+            
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-user"></i> Student Name</label>
+                <input type="text" id="studentName" class="form-input" placeholder="Enter your full name">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-user-friends"></i> Father Name</label>
+                <input type="text" id="fatherName" class="form-input" placeholder="Enter your father's name">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-envelope"></i> Email Address</label>
+                <input type="email" id="email" class="form-input" placeholder="Enter your email address">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-phone"></i> Mobile Number (WhatsApp)</label>
+                <input type="tel" id="mobile" class="form-input" placeholder="+92XXXXXXXXXX">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-city"></i> City / District</label>
+                <input type="text" id="city" class="form-input" placeholder="Enter your city/district">
+            </div>
+            <button class="btn btn-primary" onclick="handleRegistration()">
+                <span>Submit to Get Access to Quiz</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
+            <button class="btn btn-red" style="margin-top: 3.75px;" onclick="showPage('signin-page')">
+                <i class="fas fa-chevron-left"></i> Back to Home
+            </button>
+        </div>
+
+        <div id="quiz-page" class="page">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+
+            <div class="quiz-header">
+                <div class="quiz-title-container">
+                    <h2 id="quiz-title"></h2>
+                    <div class="quiz-info">
+                        <span><i class="fas fa-book"></i> Subject: <span id="quiz-subject">English Grammar</span></span>
+                        <span><i class="fas fa-clock"></i> Per MCQ: <span id="per-mcq-time">1</span> Minute</span>
+                    </div>
+                </div>
+            </div>
+            <div class="timer-container">
+                <div class="timer" id="question-timer">60</div>
+                <div class="timer total-timer" id="timer">40:00</div>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-bar" id="quiz-progress"></div>
+            </div>
+
+            <div class="question-nav" id="question-nav"></div>
+            
+            <div class="question-container">
+                <div class="question-text" id="question-text"></div>
+                <div class="options-container" id="options-container"></div>
+                <div class="reasoning" id="reasoning">
+                    <div class="reasoning-title"><i class="fas fa-lightbulb"></i> Explanation:</div>
+                    <div id="reasoning-text"></div>
+                </div>
+            </div>
+            
+            <div class="navigation-buttons">
+                <button class="nav-btn btn-back" onclick="navigateQuestion('prev')">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+                <button class="nav-btn btn-next" onclick="navigateQuestion('next')">
+                    Next <i class="fas fa-arrow-right"></i>
+                </button>
+                <button class="nav-btn btn-reasoning disabled" id="reasoning-btn" onclick="toggleReasoning()">
+                    <i class="fas fa-lightbulb"></i> Reasoning
+                </button>
+                <button class="nav-btn btn-submit" onclick="submitTest()">
+                    Submit <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="results-page" class="page">
+            <div class="results-header-buttons">
+                <a id="website-link" href="#" target="_blank" class="btn btn-primary"><i class="fas fa-globe"></i> Website</a>
+                <a id="whatsapp-contact-link" href="#" target="_blank" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> Whatsapp Contact</a>
+                <a id="whatsapp-community-link" href="#" target="_blank" class="btn btn-whatsapp"><i class="fas fa-users"></i> Whatsapp Community</a>
+            </div>
+            
+            <div class="quick-stats">
+                <div class="stat-card correct">
+                    <div class="stat-value" id="correct-count">0</div>
+                    <div class="stat-label">Correct</div>
+                </div>
+                <div class="stat-card incorrect">
+                    <div class="stat-value" id="incorrect-count">0</div>
+                    <div class="stat-label">Incorrect</div>
+                </div>
+                <div class="stat-card unanswered">
+                    <div class="stat-value" id="unanswered-count">0</div>
+                    <div class="stat-label">Unanswered</div>
+                </div>
+            </div>
+            
+            <div class="performance-meter">
+                <div class="performance-fill" id="performance-fill"></div>
+            </div>
+            
+            <div class="result-card">
+                <h2><i class="fas fa-user-graduate"></i> Student Information</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Field</th>
+                            <th>Detail</th>
+                        </tr>
+                    </thead>
+                    <tbody id="student-info-table"></tbody>
+                </table>
+            </div>
+
+            <div class="result-card">
+                <h2><i class="fas fa-chart-bar"></i> Test Results</h2>
+                <table>
+                    <tbody id="quiz-results-table"></tbody>
+                </table>
+            </div>
+            
+            <div class="result-actions">
+                <button class="btn btn-primary" onclick="restartTest()">
+                    <i class="fas fa-redo"></i> Retake Full Test
+                </button>
+                <button class="btn btn-primary" onclick="retakeIncorrect()">
+                    <i class="fas fa-bolt"></i> Retake Incorrect Questions
+                </button>
+                <button class="btn btn-primary" onclick="viewAllMcqs()">
+                    <i class="fas fa-clipboard-list"></i> View All MCQs
+                </button>
+            </div>
+        </div>
+
+        <div id="all-mcqs-page" class="page">
+            <h2><i class="fas fa-list-alt"></i> All MCQs and Solutions</h2>
+            <div class="all-mcqs-list" id="all-mcqs-list"></div>
+            <button class="btn btn-primary" onclick="showPage('results-page')">
+                <i class="fas fa-arrow-left"></i> Back to Results
+            </button>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html><script>// ***************************************************************
+// !! IMPORTANT: GOOGLE APPS SCRIPT URL FOR DATA LOGGING !!
+const SHEET_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbytFFLl5Lpcl0PInTsVNvypwcdlP7M5YEK5CVQqHxQq3TTPYWkeMH701JpIa5Yd-Rs/exec';
+// ***************************************************************
+
+// Quiz Data
+const quizData_WCW_ENG_05 = [
+    {
+        question: "The board decided not _____ the contentious proposal, fearing negative public reaction.",
+        options: [
+            "to approve",
+            "approving",
+            "approve",
+            "having approved"
+        ],
+        correctAnswer: 0,
+        reasoning: "The verb 'decide' is typically followed by an infinitive phrase. The negative 'not' precedes the infinitive 'to approve' to negate the action. Example: 'They decided not to inform the press yet.'"
+    },
+    {
+        question: "She expressed regret _____ such a crucial opportunity due to oversight.",
+        options: [
+            "to miss",
+            "missing",
+            "having missed",
+            "missed"
+        ],
+        correctAnswer: 2,
+        reasoning: "The verb 'regret' can be followed by a gerund to express regret about a past action. The perfect gerund 'having missed' emphasizes that the action of missing occurred before the feeling of regret. Example: 'He regretted having wasted so much time.' While 'missing' is possible, 'having missed' is more precise for a past, completed action."
+    },
+    {
+        question: "The complex algorithm proved nearly impossible _____ without a comprehensive manual.",
+        options: [
+            "to grasp",
+            "grasping",
+            "to be grasped",
+            "having grasped"
+        ],
+        correctAnswer: 0,
+        reasoning: "Adjectives like 'impossible' are often followed by an infinitive phrase to indicate what is difficult or impossible. Example: 'This problem is difficult to solve.'"
+    },
+    {
+        question: "Despite repeated warnings, he kept _____ his research data on an unsecured server.",
+        options: [
+            "to store",
+            "stored",
+            "storing",
+            "to be storing"
+        ],
+        correctAnswer: 2,
+        reasoning: "The verb 'keep' (meaning to continue) is followed by a gerund. Example: 'She kept talking despite the interruptions.'"
+    },
+    {
+        question: "The witness claimed _____ the suspect near the scene, but his testimony lacked corroboration.",
+        options: [
+            "to see",
+            "seeing",
+            "to have seen",
+            "have seen"
+        ],
+        correctAnswer: 2,
+        reasoning: "The verb 'claim' can be followed by an infinitive. To indicate that the seeing happened before the claiming, the perfect infinitive 'to have seen' is used. Example: 'He claimed to have finished the project before the deadline.'"
+    },
+    {
+        question: "_____ regularly is paramount for maintaining cognitive agility in old age.",
+        options: [
+            "Exercise",
+            "To exercise",
+            "Exercising",
+            "Having exercised"
+        ],
+        correctAnswer: 2,
+        reasoning: "A gerund phrase acts as a noun and can function as the subject of a sentence. 'Exercising' functions as the subject here. Example: 'Reading is my favorite pastime.'"
+    },
+    {
+        question: "The institution aims _____ equitable access to education for all its students; _____, it faces significant budgetary constraints.",
+        options: [
+            "to provide; however",
+            "providing; therefore",
+            "to be providing; moreover",
+            "to have provided; consequently"
+        ],
+        correctAnswer: 0,
+        reasoning: "The verb 'aim' is followed by an infinitive (aims to provide). The second part of the sentence introduces a contrasting idea (budgetary constraints) to the institution's aim, making 'however' the appropriate transitional device. Example: 'She wanted to go; however, she was too tired.'"
+    },
+    {
+        question: "The new policy mandates _____ all sensitive documents through a secure portal, _____ preventing data breaches.",
+        options: [
+            "submitting; thereby",
+            "to submit; thus",
+            "submission; hence",
+            "having submitted; for example"
+        ],
+        correctAnswer: 0,
+        reasoning: "The verb 'mandate' is often followed by a gerund or a 'that' clause. Here, 'submitting' acts as the object of 'mandates.' The transitional device 'thereby' introduces a consequence or result of the action (preventing data breaches). Example: 'He studied diligently, thereby improving his grades.'"
+    },
+    {
+        question: "The committee advised _____ more stringent protocols, but did not immediately vote on _____ them.",
+        options: [
+            "implementing; to adopt",
+            "to implement; adopting",
+            "implement; adopt",
+            "implementing; adopting"
+        ],
+        correctAnswer: 3,
+        reasoning: "The verb 'advise' can be followed by a gerund when there is no direct object (e.g., advise implementing). The preposition 'on' must be followed by a gerund (adopting). Example: 'She advised waiting for a better opportunity. He insisted on leaving immediately.'"
+    },
+    {
+        question: "_____ the initial reports, the project is significantly behind schedule; _____, further delays are anticipated.",
+        options: [
+            "To confirm; moreover",
+            "Confirming; however",
+            "According to; consequently",
+            "As per; nevertheless"
+        ],
+        correctAnswer: 2,
+        reasoning: "'According to' is a common phrase to introduce information from a source. The second clause presents a logical consequence of the first (being behind schedule leads to further delays), making 'consequently' the appropriate transitional device. Example: 'According to the forecast, it will rain tomorrow. Consequently, the outdoor event was canceled.'"
+    },
+    {
+        question: "Despite the evidence, the suspect maintained _____ present at the crime scene.",
+        options: [
+            "not to be",
+            "not being",
+            "not having been",
+            "to not be"
+        ],
+        correctAnswer: 2,
+        reasoning: "The verb 'maintain' in the sense of asserting something is followed by a gerund for a past action. The perfect gerund 'not having been' clearly indicates the denial of a past presence. Example: 'He maintained having seen the entire incident.' Or, 'He maintained not having left the house.'"
+    },
+    {
+        question: "The research aims _____ the underlying mechanisms of the disease, _____ providing novel targets for therapy.",
+        options: [
+            "to elucidate; thereby",
+            "elucidating; thus",
+            "to be elucidating; consequently",
+            "having elucidated; moreover"
+        ],
+        correctAnswer: 0,
+        reasoning: "'Aim' is followed by an infinitive 'to elucidate.' 'Thereby' is used to introduce the result or consequence of the action described in the main clause. Example: 'Scientists aim to discover a cure, thereby alleviating suffering.'"
+    },
+    {
+        question: "It's imperative that students refrain _____ plagiarism, _____ the integrity of their academic work.",
+        options: [
+            "from committing; to ensure",
+            "to commit; ensuring",
+            "committing; by ensuring",
+            "from committing; ensuring"
+        ],
+        correctAnswer: 3,
+        reasoning: "The verb 'refrain' is always followed by the preposition 'from' and then a gerund (from committing). The second part of the sentence describes the purpose or result, using a gerund phrase ('ensuring...') functioning adverbially to modify the previous action. Example: 'He abstained from voting, ensuring a tie.'"
+    },
+    {
+        question: "Many critics considered the film _____ a masterpiece, but its box office performance suggested otherwise.",
+        options: [
+            "being",
+            "to be",
+            "to have been",
+            "have been"
+        ],
+        correctAnswer: 1,
+        reasoning: "Verbs like 'consider,' 'believe,' 'find,' 'think,' 'know' are often followed by an object and then an infinitive 'to be' when stating a judgment or belief about something. Example: 'They considered him to be the best candidate.'"
+    },
+    {
+        question: "He was accused _____ sensitive information, _____ undermining national security.",
+        options: [
+            "of leaking; thereby",
+            "to leak; thus",
+            "leaking; and",
+            "for leaking; consequently"
+        ],
+        correctAnswer: 0,
+        reasoning: "The passive construction 'be accused' is followed by the preposition 'of' and then a gerund (of leaking). 'Thereby' correctly introduces the consequence of the action. Example: 'She was accused of stealing the documents, thereby causing a scandal.'"
+    },
+    {
+        question: "The manager made the team members _____ extra hours, _____ the approaching deadline.",
+        options: [
+            "to work; given",
+            "work; given",
+            "working; because of",
+            "to be working; due to"
+        ],
+        correctAnswer: 1,
+        reasoning: "The causative verb 'make' is followed by a bare infinitive (work). 'Given' can function as a preposition meaning 'considering' or 'because of' when followed by a noun phrase, fitting the context. Example: 'She made him laugh. Given the circumstances, we should proceed cautiously.'"
+    },
+    {
+        question: "It's no use _____ over spilled milk; you should focus on _____ a solution.",
+        options: [
+            "crying; finding",
+            "to cry; to find",
+            "crying; to find",
+            "to cry; finding"
+        ],
+        correctAnswer: 0,
+        reasoning: "The idiom 'it's no use' is always followed by a gerund ('crying'). The phrase 'focus on' is followed by a gerund ('finding') because 'on' is a preposition. Example: 'It's no use complaining now. Focus on improving next time.'"
+    },
+    {
+        question: "She helped him _____ his presentation, _____ ensuring its clarity and impact.",
+        options: [
+            "to refine; consequently",
+            "refine; thereby",
+            "refining; thus",
+            "to be refining; meanwhile"
+        ],
+        correctAnswer: 1,
+        reasoning: "The verb 'help' can be followed by either a bare infinitive or an infinitive with 'to' (both 'refine' and 'to refine' are grammatically correct, but 'refine' is often more direct). 'Thereby' introduces the result of the helping action. Example: 'He helped me (to) clean the house, thereby finishing faster.'"
+    },
+    {
+        question: "The company decided against _____ further investments in the volatile market, _____ potential losses.",
+        options: [
+            "making; to avoid",
+            "to make; avoiding",
+            "making; avoiding",
+            "having made; thereby avoiding"
+        ],
+        correctAnswer: 2,
+        reasoning: "The phrase 'decide against' requires a gerund ('making') after the preposition 'against'. The purpose of avoiding losses is best expressed by an adverbial gerund phrase 'avoiding potential losses'. Example: 'They decided against waiting. She walked away, avoiding eye contact.'"
+    },
+    {
+        question: "His tendency _____ deadlines without proper planning often leads to unforeseen complications, _____ last-minute rushes.",
+        options: [
+            "to miss; causing",
+            "missing; to cause",
+            "to be missing; to be causing",
+            "having missed; consequently causing"
+        ],
+        correctAnswer: 0,
+        reasoning: "The noun 'tendency' is followed by an infinitive ('to miss') to describe the nature of the tendency. The result of this tendency is expressed using an adverbial gerund phrase ('causing last-minute rushes'). Example: 'Her ability to adapt is remarkable, allowing her to thrive.'"
+    },
+    {
+        question: "The new manager began _____ changes immediately, _____ to the dismay of long-term employees.",
+        options: [
+            "implementing; much",
+            "to implement; much",
+            "implement; quite",
+            "implementing; very"
+        ],
+        correctAnswer: 1,
+        reasoning: "Verbs like 'begin' can be followed by either a gerund or an infinitive with little difference in meaning, but 'to implement' is a standard choice. 'Much to the dismay' is a common idiomatic expression. Example: 'He began to work. Much to her surprise, he arrived early.'"
+    },
+    {
+        question: "The children couldn't help _____ at the clown's antics, _____ the solemn atmosphere of the event.",
+        options: [
+            "to laugh; despite",
+            "laughing; despite",
+            "to be laughing; even though",
+            "laugh; nevertheless"
+        ],
+        correctAnswer: 1,
+        reasoning: "The idiom 'can't help' is always followed by a gerund ('laughing'). 'Despite' is a preposition used to introduce a contrasting element or concession, here contrasting the laughter with the solemn atmosphere. Example: 'She couldn't help smiling. Despite the rain, they had a good time.'"
+    },
+    {
+        question: "The detective observed the suspect _____ the premises, but failed _____ any incriminating evidence.",
+        options: [
+            "entering; to find",
+            "to enter; finding",
+            "entering; finding",
+            "enter; to find"
+        ],
+        correctAnswer: 3,
+        reasoning: "Verbs of perception (like 'observe,' 'see,' 'hear') can be followed by a bare infinitive to describe a completed action or a present participle/gerund for an ongoing action. 'Enter' indicates the completed act of entering. 'Fail' is followed by an infinitive ('to find'). Example: 'I watched him leave. He failed to appear for the meeting.'"
+    },
+    {
+        question: "He regretted _____ the details of the confidential meeting, _____ it led to severe repercussions.",
+        options: [
+            "to reveal; considering that",
+            "revealing; given that",
+            "to have revealed; as a result",
+            "having revealed; knowing that"
+        ],
+        correctAnswer: 3,
+        reasoning: "The verb 'regret' when referring to a past action is followed by a perfect gerund ('having revealed'). 'Knowing that' or 'given that' introduces the reason or consequence. 'Knowing that' fits the causal link better here than 'as a result' as 'knowing' provides the understanding of *why* he regretted it. Example: 'She regretted having spoken so harshly, knowing that her words had caused pain.'"
+    },
+    {
+        question: "The project leader, a meticulous planner, prefers _____ all potential risks before _____ a new phase.",
+        options: [
+            "to assess; embarking on",
+            "assessing; to embark on",
+            "to be assessing; embarking on",
+            "assess; embarking on"
+        ],
+        correctAnswer: 0,
+        reasoning: "The verb 'prefer' can be followed by an infinitive 'to assess' when expressing a general preference. The phrase 'embark on' means 'to start something,' and 'before' is a preposition, requiring a gerund ('embarking on'). Example: 'I prefer to read in silence before going to bed.'"
+    },
+    {
+        question: "The government refused _____ to the demands of the protesters, _____ asserting its authority.",
+        options: [
+            "to yield; thereby",
+            "yielding; thus",
+            "to be yielding; consequently",
+            "to yield; moreover"
+        ],
+        correctAnswer: 0,
+        reasoning: "The verb 'refuse' is followed by an infinitive ('to yield'). 'Thereby' correctly introduces the consequence or result of the government's refusal. Example: 'They refused to negotiate, thereby escalating the conflict.'"
+    },
+    {
+        question: "Students are often advised _____ extensive notes during lectures, _____ facilitate later recall.",
+        options: [
+            "taking; in order to",
+            "to take; in order to",
+            "taking; so as to",
+            "to take; so that they"
+        ],
+        correctAnswer: 1,
+        reasoning: "The passive form 'be advised' is followed by an infinitive ('to take'). 'In order to' correctly introduces the purpose of taking notes. Example: 'You are advised to arrive early in order to get a good seat.'"
+    },
+    {
+        question: "The ancient manuscript was discovered _____ by a monk, _____ a lost chapter of history.",
+        options: [
+            "to have been written; thus revealing",
+            "to be written; thereby revealing",
+            "writing; consequently revealing",
+            "to have written; and revealing"
+        ],
+        correctAnswer: 0,
+        reasoning: "The verb 'discover' followed by an object and then an infinitive 'to have been written' indicates a past passive action, implying the discovery that it was written in the past. 'Thus revealing' introduces the result of this discovery. Example: 'The fossil was discovered to have been buried for millennia, thus shedding light on ancient life.'"
+    },
+    {
+        question: "Some scientists argue that the universe continues _____ without end; _____, others propose a finite existence.",
+        options: [
+            "to expand; however",
+            "expanding; therefore",
+            "to be expanding; in contrast",
+            "expand; nevertheless"
+        ],
+        correctAnswer: 0,
+        reasoning: "The verb 'continue' can be followed by either an infinitive ('to expand') or a gerund ('expanding') with similar meaning. 'However' is the appropriate transitional device to introduce a contrasting viewpoint from other scientists. Example: 'He continued to work. However, his progress was slow.'"
+    },
+    {
+        question: "The unexpected revelation forced the CEO _____ his resignation, _____ a significant blow to the company's image.",
+        options: [
+            "to tender; delivering",
+            "tendering; thereby delivering",
+            "to have tendered; thus delivering",
+            "tender; consequently delivering"
+        ],
+        correctAnswer: 0,
+        reasoning: "The verb 'force' is followed by an object and then an infinitive ('to tender'). The gerund phrase 'delivering a significant blow' functions adverbially to describe the result or consequence of the CEO's resignation. Example: 'The crisis forced him to reconsider his options, delivering a harsh lesson.'"
+    },
+    {
+        question: "_____ the recent economic downturn, many businesses are hesitant _____ new ventures.",
+        options: [
+            "Owing to; to embark on",
+            "Due to; embarking on",
+            "Because of; to be embarking on",
+            "In spite of; embark on"
+        ],
+        correctAnswer: 0,
+        reasoning: "'Owing to' (or 'due to,' 'because of') correctly introduces the cause. 'Hesitant' is an adjective followed by an infinitive ('to embark on'). Example: 'Owing to bad weather, the flight was delayed. She was hesitant to accept the offer.'"
+    },
+    {
+        question: "The diplomat skillfully avoided _____ any direct questions, _____ maintaining a neutral stance.",
+        options: [
+            "to answer; thereby",
+            "answering; thereby",
+            "answer; consequently",
+            "to be answering; thus"
+        ],
+        correctAnswer: 1,
+        reasoning: "The verb 'avoid' is always followed by a gerund ('answering'). 'Thereby' introduces the method or result of avoiding the questions. Example: 'He avoided making eye contact, thereby signaling his discomfort.'"
+    },
+    {
+        question: "The university's ethics committee has the authority _____ allegations of academic misconduct, _____ ensuring fairness.",
+        options: [
+            "to investigate; thereby",
+            "investigating; thus",
+            "to be investigating; consequently",
+            "investigate; and therefore"
+        ],
+        correctAnswer: 0,
+        reasoning: "The noun 'authority' is followed by an infinitive 'to investigate' to specify the nature of the authority. 'Thereby' introduces the consequence of exercising this authority. Example: 'The police have the authority to make arrests, thereby maintaining law and order.'"
+    },
+    {
+        question: "He found himself _____ for a role he never imagined _____ for.",
+        options: [
+            "auditioning; to be suitable",
+            "auditioning; being suitable",
+            "to audition; suitable",
+            "audition; to be suitable"
+        ],
+        correctAnswer: 1,
+        reasoning: "The phrase 'find oneself' is followed by a gerund ('auditioning'). The adjective 'suitable' is typically followed by a preposition + gerund (suitable for being) or an infinitive (suitable to be). Here, 'imagined being suitable for' means he never imagined *himself* being suitable. Example: 'She found herself living abroad. He imagined being a famous musician.'"
+    },
+    {
+        question: "The manager suggested _____ the meeting until all stakeholders could attend; _____, the proposal was rejected.",
+        options: [
+            "postponing; however",
+            "to postpone; consequently",
+            "postpone; moreover",
+            "having postponed; therefore"
+        ],
+        correctAnswer: 0,
+        reasoning: "The verb 'suggest' is typically followed by a gerund ('postponing'). 'However' is the appropriate transitional device to introduce a contrasting outcome (the proposal was rejected despite the suggestion). Example: 'She suggested taking a break. However, he preferred to continue working.'"
+    },
+    {
+        question: "The pervasive silence seemed _____ the gravity of the moment, _____ everyone in a state of anxious anticipation.",
+        options: [
+            "to underscore; leaving",
+            "underscoring; to leave",
+            "to be underscoring; consequently leaving",
+            "underscore; thereby leaving"
+        ],
+        correctAnswer: 0,
+        reasoning: "The verb 'seem' is followed by an infinitive ('to underscore'). The gerund phrase 'leaving everyone...' functions adverbially to describe the simultaneous result or effect. Example: 'The news seemed to confirm their fears, leaving them distraught.'"
+    },
+    {
+        question: "_____ a more balanced approach is crucial; _____, it demands significant institutional restructuring.",
+        options: [
+            "To adopt; nonetheless",
+            "Adopting; therefore",
+            "Adopt; meanwhile",
+            "To have adopted; in addition"
+        ],
+        correctAnswer: 0,
+        reasoning: "When 'to adopt' functions as a standalone purpose or goal at the beginning of a sentence, it's an infinitive of purpose. 'Nonetheless' is an appropriate transitional device for introducing a contrasting difficulty or requirement. Example: 'To succeed, one must work hard. Nonetheless, luck also plays a role.'"
+    },
+    {
+        question: "The architect neglected _____ the structural integrity, _____ leading to the collapse.",
+        options: [
+            "to check; eventually",
+            "checking; thereby",
+            "to be checking; consequently",
+            "to have checked; finally"
+        ],
+        correctAnswer: 0,
+        reasoning: "The verb 'neglect' is followed by an infinitive ('to check'). 'Eventually' appropriately signals that the collapse happened later as a result of the neglect. Example: 'He neglected to water the plants, eventually causing them to wither.'"
+    },
+    {
+        question: "He had difficulty _____ what had transpired, _____ the trauma of the event.",
+        options: [
+            "to recall; owing to",
+            "recalling; owing to",
+            "recall; because of",
+            "to be recalling; due to"
+        ],
+        correctAnswer: 1,
+        reasoning: "The phrase 'have difficulty' is followed by a gerund ('recalling'). 'Owing to' is a correct and formal transitional phrase to express the cause. Example: 'She had difficulty understanding the concept owing to its complexity.'"
+    },
+    {
+        question: "The committee is currently considering _____ new regulations, _____ ensuring public safety.",
+        options: [
+            "to propose; thereby",
+            "proposing; in order to",
+            "proposing; thereby",
+            "to be proposing; consequently"
+        ],
+        correctAnswer: 2,
+        reasoning: "The verb 'consider' is followed by a gerund ('proposing'). 'Thereby' introduces the consequence or purpose of proposing the regulations. Example: 'They are considering buying a new car, thereby improving their commute.'"
+    },
+    {
+        question: "His tendency _____ others’ opinions often led him _____ a skewed perspective.",
+        options: [
+            "to dismiss; to develop",
+            "dismissing; developing",
+            "to be dismissing; to be developing",
+            "dismiss; develop"
+        ],
+        correctAnswer: 0,
+        reasoning: "The noun 'tendency' is followed by an infinitive ('to dismiss'). The verb 'lead' followed by an object is usually followed by an infinitive ('to develop'). Example: 'Her habit to procrastinate led her to miss the deadline.'"
+    },
+    {
+        question: "The evidence seemed _____ sufficient, _____ the prosecution opted for a plea bargain.",
+        options: [
+            "to be; therefore",
+            "being; consequently",
+            "to have been; however",
+            "to be; nonetheless"
+        ],
+        correctAnswer: 3,
+        reasoning: "The verb 'seem' is followed by an infinitive ('to be'). 'Nonetheless' is the best transitional device here as it introduces a surprising or contrasting outcome given the previous statement (evidence seemed sufficient, *but* they still went for a plea bargain). 'Therefore' would imply a logical consequence which isn't the case here. Example: 'The weather seemed to be clearing; nonetheless, they decided to bring umbrellas.'"
+    },
+    {
+        question: "They were prohibited _____ the restricted area, _____ the risk of contamination.",
+        options: [
+            "from entering; given",
+            "to enter; because of",
+            "entering; owing to",
+            "from entering; owing to"
+        ],
+        correctAnswer: 3,
+        reasoning: "The verb 'prohibit' is followed by 'from' and a gerund ('from entering'). 'Owing to' is a formal transitional phrase correctly indicating the reason for the prohibition. Example: 'Students were prohibited from using their phones during exams, owing to academic integrity concerns.'"
+    },
+    {
+        question: "He was observed _____ the premises around midnight, _____ a black bag.",
+        options: [
+            "to leave; carrying",
+            "leaving; carrying",
+            "leave; to carry",
+            "to be leaving; to be carrying"
+        ],
+        correctAnswer: 1,
+        reasoning: "Verbs of perception like 'observe' can be followed by a gerund (or present participle) to indicate an action in progress. 'Leaving' shows the action of departing was observed. 'Carrying' functions as a present participle describing the simultaneous action. Example: 'I saw him walking down the street, singing a song.'"
+    },
+    {
+        question: "The board unanimously voted _____ the CEO's compensation package, _____ its performance metrics.",
+        options: [
+            "to approve; considering",
+            "approving; considering",
+            "to be approved; considering",
+            "approve; considering"
+        ],
+        correctAnswer: 0,
+        reasoning: "The verb 'vote' when indicating an action taken (not a future possibility) is followed by an infinitive ('to approve'). 'Considering' acts as a preposition meaning 'taking into account.' Example: 'They voted to build a new park, considering the community's needs.'"
+    },
+    {
+        question: "The institution is averse _____ such radical changes, _____ potentially destabilizing its operational framework.",
+        options: [
+            "to implement; thereby",
+            "implementing; consequently",
+            "to implementing; thereby",
+            "to be implementing; thus"
+        ],
+        correctAnswer: 2,
+        reasoning: "The adjective 'averse' is always followed by the preposition 'to' and then a gerund ('to implementing'). 'Thereby' introduces the consequence of implementing such changes. Example: 'She is averse to flying, thereby preferring train travel.'"
+    },
+    {
+        question: "Many contemporary artists eschew _____ traditional methods, _____ preferring digital media.",
+        options: [
+            "to use; instead",
+            "using; instead",
+            "use; alternatively",
+            "to be using; conversely"
+        ],
+        correctAnswer: 1,
+        reasoning: "The verb 'eschew' (meaning to deliberately avoid using) is followed by a gerund ('using'). 'Instead' correctly introduces an alternative preference or action. Example: 'He eschewed eating meat, instead opting for a vegetarian diet.'"
+    },
+    {
+        question: "The complex problem requires meticulous analysis _____ possible solutions, _____ optimal outcomes.",
+        options: [
+            "to identify; to ensure",
+            "identifying; ensuring",
+            "to identify; ensuring",
+            "identifying; to ensure"
+        ],
+        correctAnswer: 2,
+        reasoning: "The phrase 'meticulous analysis' is followed by an infinitive 'to identify' specifying the purpose of the analysis. The purpose of identifying solutions is 'ensuring optimal outcomes,' expressed using an adverbial gerund phrase. Example: 'They conducted research to understand the market, ensuring competitive pricing.'"
+    },
+    {
+        question: "He pretended _____ the entire conversation, _____ his true intentions.",
+        options: [
+            "not to hear; masking",
+            "not hearing; to mask",
+            "not to be hearing; thereby masking",
+            "not hear; thus masking"
+        ],
+        correctAnswer: 0,
+        reasoning: "The verb 'pretend' is followed by an infinitive ('to hear'). The negation 'not' comes before the 'to'. The gerund phrase 'masking his true intentions' functions adverbially to describe a simultaneous or resulting action. Example: 'She pretended not to notice the mistake, masking her frustration.'"
+    },
+    {
+        question: "The committee's decision _____ the funds without proper oversight was deplorable; _____, its consequences were severe.",
+        options: [
+            "to allocate; indeed",
+            "allocating; however",
+            "to have allocated; consequently",
+            "to allocate; nevertheless"
+        ],
+        correctAnswer: 0,
+        reasoning: "The noun 'decision' is followed by an infinitive ('to allocate') to specify the content of the decision. 'Indeed' is used to emphasize or confirm a preceding statement, here emphasizing the deplorable nature. Example: 'His decision to leave was sudden; indeed, it shocked everyone.'"
+    }
+];
+
+// Constants
+const QUIZ_ACCESS_CODE = "PreMium-A-12345";
+const DEV_ACCESS_CODE = "Dev-PDA-001";
+const ACADEMY_NAME = "WHITE COAT WORRIORS ";
+const QUIZ_SUBJECT = "Phrases & Transitional Devices ";
+const WEBSITE_LINK = "https://premiumdoctoracademy.com";
+const WHATSAPP_CONTACT = "03287743851";
+const WHATSAPP_COMMUNITY = "https://whatsapp.com/channel/0029VaFCIU6EquiOlXWcNR1X";
+const TIME_PER_MCQ = 60;
+const MARK_PER_MCQ = 1;
+const NEGATIVE_MARKING = 0;
+
+// Global state variables
+let currentQuizId = 'WCW-ENG-05';
+let quizData = quizData_WCW_ENG_05;
+let currentQuestion = 0;
+let userAnswers = Array(quizData.length).fill(null);
+let timeLeft;
+let questionTimeLeft;
+let totalTimeInterval;
+let questionTimeInterval;
+let studentData = {};
+let studentAccessCode = "";
+
+// DOM elements
+const questionNavEl = document.getElementById('question-nav');
+const questionTextEl = document.getElementById('question-text');
+const optionsContainerEl = document.getElementById('options-container');
+const reasoningEl = document.getElementById('reasoning');
+const reasoningTextEl = document.getElementById('reasoning-text');
+const quizTitleEl = document.getElementById('quiz-title');
+const quizSubjectEl = document.getElementById('quiz-subject');
+const perMcqTimeEl = document.getElementById('per-mcq-time');
+const totalTimerEl = document.getElementById('timer');
+const questionTimerEl = document.getElementById('question-timer');
+const quizProgressEl = document.getElementById('quiz-progress');
+const studentInfoTable = document.getElementById('student-info-table');
+const quizResultsTable = document.getElementById('quiz-results-table');
+const allMcqsList = document.getElementById('all-mcqs-list');
+const devPasswordInput = document.getElementById('developerPassword');
+const devErrorBox = document.getElementById('dev-error-box');
+const quizAccessCodeInput = document.getElementById('quizAccessCode');
+const quizAccessErrorBox = document.getElementById('quiz-error-box');
+const toggleDevPasswordIcon = document.getElementById('toggleDeveloperPassword');
+const toggleQuizCodeIcon = document.getElementById('toggleQuizAccessCode');
+const websiteLinkEl = document.getElementById('website-link');
+const whatsappContactLinkEl = document.getElementById('whatsapp-contact-link');
+const whatsappCommunityLinkEl = document.getElementById('whatsapp-community-link');
+const reasoningBtn = document.getElementById('reasoning-btn');
+const quizNotificationEl = document.getElementById('quiz-notification');
+const notificationTitleEl = document.getElementById('notification-title');
+const notificationMessageEl = document.getElementById('notification-message');
+const notificationYesBtn = document.getElementById('notification-yes');
+const notificationNoBtn = document.getElementById('notification-no');
+const correctCountEl = document.getElementById('correct-count');
+const incorrectCountEl = document.getElementById('incorrect-count');
+const unansweredCountEl = document.getElementById('unanswered-count');
+const performanceFillEl = document.getElementById('performance-fill');
+
+
+/**
+ * @description Sends data to the Google Apps Script endpoint.
+ * @param {object} data - The payload containing type ('registration' or 'quiz_result') and data.
+ */
+function sendDataToSheet(data) {
+    if (!SHEET_SCRIPT_URL || SHEET_SCRIPT_URL.includes('YOUR_DEPLOYED_WEB_APP_URL')) {
+        console.error('SHEET_SCRIPT_URL is not configured. Data not sent to Google Sheet.');
+        return Promise.resolve({ success: false, message: 'Script URL not configured.' });
+    }
+
+    return fetch(SHEET_SCRIPT_URL, {
+        method: 'POST',
+        // 'no-cors' is necessary for Apps Script to accept cross-origin POST requests from a web page
+        mode: 'no-cors',
+        cache: 'no-cache',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        // Cannot read response body with 'no-cors', assume request was sent successfully
+        return { success: true, message: 'Request sent to Google Script.' };
+    })
+    .catch(error => {
+        console.error('Sheet Data Send Error:', error);
+        return { success: false, message: 'Failed to send request to Google Script.' };
+    });
+}
+
+
+// Initialization
+document.addEventListener('DOMContentLoaded', () => {
+    const storedStudentData = localStorage.getItem('studentData');
+    if (storedStudentData) {
+        studentData = JSON.parse(storedStudentData);
+        document.getElementById('studentName').value = studentData['Student Name'] || '';
+        document.getElementById('fatherName').value = studentData['Father Name'] || '';
+        document.getElementById('email').value = studentData['Email'] || '';
+        document.getElementById('mobile').value = studentData['Mobile'] || '';
+        document.getElementById('city').value = studentData['City'] || '';
+    }
+    const storedCode = localStorage.getItem('studentAccessCode');
+    if (storedCode) {
+        studentAccessCode = storedCode;
+    }
+    
+    showPage('signin-page');
+    
+    if (toggleDevPasswordIcon) toggleDevPasswordIcon.addEventListener('click', () => togglePasswordVisibility('developerPassword', 'toggleDeveloperPassword'));
+    if (toggleQuizCodeIcon) toggleQuizCodeIcon.addEventListener('click', () => togglePasswordVisibility('quizAccessCode', 'toggleQuizAccessCode'));
+});
+
+function showQuizNotification(title, message, type = 'info') {
+    const allowedNotifications = ['Registration Successful', 'Access Granted', 
+                                 'Quiz Completed!', 'Quiz Reset', 'Registration Error', 'Submission Error', 'Registration Warning'];
+    
+    if (!allowedNotifications.includes(title)) {
+        return;
+    }
+    
+    notificationTitleEl.textContent = title;
+    notificationMessageEl.textContent = message;
+    
+    quizNotificationEl.classList.remove('warning', 'error');
+    
+    if (type === 'warning') {
+        quizNotificationEl.classList.add('warning');
+    } else if (type === 'error') {
+        quizNotificationEl.classList.add('error');
+    }
+    
+    quizNotificationEl.classList.add('show');
+    
+    setTimeout(() => {
+        if (quizNotificationEl.classList.contains('show')) {
+            hideQuizNotification();
+        }
+    }, 5000);
+}
+
+function hideQuizNotification() {
+    quizNotificationEl.classList.remove('show');
+}
+
+function showPage(pageId) {
+    const pages = document.querySelectorAll('.page');
+    pages.forEach(page => page.classList.remove('active'));
+    document.getElementById(pageId).classList.add('active');
+    document.querySelectorAll('.error-box, .success-box').forEach(el => el.style.display = 'none');
+}
+
+function togglePasswordVisibility(inputID, iconID) {
+    const passwordInput = document.getElementById(inputID);
+    const toggleIcon = document.getElementById(iconID);
+    
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleIcon.classList.remove('fa-eye-slash');
+        toggleIcon.classList.add('fa-eye');
+    } else {
+        passwordInput.type = 'password';
+        toggleIcon.classList.remove('fa-eye');
+        toggleIcon.classList.add('fa-eye-slash');
+    }
+}
+
+function showQuizAccessForm() {
+    document.getElementById('quiz-access-form').style.display = 'flex';
+    document.getElementById('developer-access-form').style.display = 'none';
+}
+
+function showDeveloperAccessForm() {
+    document.getElementById('developer-access-form').style.display = 'flex';
+    document.getElementById('quiz-access-form').style.display = 'none';
+}
+
+function showRegistrationPage() {
+    showPage('registration-page');
+}
+
+// Registration Handler
+function generateAccessCode(studentName, fatherName) {
+    const studentInitials = studentName.split(' ').map(n => n[0]).join('').toUpperCase();
+    const fatherInitials = fatherName.split(' ').map(n => n[0]).join('').toUpperCase();
+    const uniqueId = Math.random().toString(36).substring(2, 7).toUpperCase();
+
+    return `${ACADEMY_NAME.replace(/\s+/g, '-')}-${studentInitials}${fatherInitials}-${uniqueId}`;
+}
+
+function handleRegistration() {
+    const sName = document.getElementById('studentName').value.trim();
+    const fName = document.getElementById('fatherName').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const mobile = document.getElementById('mobile').value.trim();
+    const city = document.getElementById('city').value.trim();
+    
+    if (!sName || !fName || !email || !mobile || !city) {
+        showQuizNotification('Registration Error', 'Please fill in all the registration details.', 'error');
+        return;
+    }
+    
+    // Generate access code
+    const generatedCode = generateAccessCode(sName, fName);
+    studentAccessCode = generatedCode;
+
+    studentData = {
+        'Student Name': sName,
+        'Father Name': fName,
+        'Email': email,
+        'Mobile': mobile,
+        'City': city
+    };
+
+    // --- NEW: SEND REGISTRATION DATA TO GOOGLE SHEET ---
+    const registrationDataToSend = {
+        type: 'registration',
+        accessCode: generatedCode,
+        studentName: sName,
+        fatherName: fName,
+        email: email,
+        mobile: mobile,
+        city: city
+    };
+    
+    sendDataToSheet(registrationDataToSend)
+        .then(response => {
+            console.log('Sheet Registration Response:', response);
+            showQuizNotification('Registration Successful', `Your code: ${generatedCode}. Data submitted to sheet.`, 'info');
+        })
+        .catch(error => {
+            console.error('Sheet Registration Error:', error);
+            showQuizNotification('Registration Warning', `Registration saved locally, but sheet submission failed.`, 'warning');
+        });
+    // ----------------------------------------------------
+    
+    // Store data locally
+    localStorage.setItem('studentAccessCode', generatedCode);
+    localStorage.setItem('studentData', JSON.stringify(studentData));
+    
+    const registrations = JSON.parse(localStorage.getItem('wcwRegistrations') || '[]');
+    registrations.push({
+        ...studentData,
+        accessCode: generatedCode,
+        timestamp: new Date().toISOString()
+    });
+    localStorage.setItem('wcwRegistrations', JSON.stringify(registrations));
+    
+    
+    // Start the quiz after registration
+    startQuiz('WCW-ENG-05', 'Student', generatedCode);
+}
+
+// Quiz Access Handler
+function checkDeveloperPassword() {
+    devErrorBox.style.display = 'none';
+    if (devPasswordInput.value === DEV_ACCESS_CODE) {
+        showQuizNotification('Access Granted', 'Welcome! You have successfully logged in as a developer.', 'info');
+        startQuiz('WCW-ENG-05', 'Developer', DEV_ACCESS_CODE);
+    } else {
+        devErrorBox.style.display = 'block';
+    }
+}
+
+function accessQuiz(inputCode) {
+    const errorBox = document.getElementById('quiz-error-box');
+    errorBox.style.display = 'none';
+    
+    const storedStudentCode = localStorage.getItem('studentAccessCode');
+    
+    if (inputCode === QUIZ_ACCESS_CODE || inputCode === DEV_ACCESS_CODE || inputCode === storedStudentCode) {
+        showQuizNotification('Access Granted', 'Welcome! You can now start the quiz.', 'info');
+        startQuiz('WCW-ENG-05', 'Student', inputCode);
+    } else {
+        errorBox.style.display = 'block';
+    }
+}
+
+function startQuiz(quizId, userType, code) {
+    currentQuizId = quizId;
+    quizData = quizData_WCW_ENG_05;
+    
+    // Always start fresh - no progress restoration
+    currentQuestion = 0;
+    userAnswers = Array(quizData.length).fill(null);
+    
+    timeLeft = quizData.length * TIME_PER_MCQ;
+    questionTimeLeft = TIME_PER_MCQ;
+    
+    localStorage.setItem('lastAccessCode', code);
+
+    showPage('quiz-page');
+    initQuiz();
+}
+
+// Quiz Logic
+function initQuiz() {
+    quizSubjectEl.textContent = QUIZ_SUBJECT;
+    perMcqTimeEl.textContent = Math.floor(TIME_PER_MCQ / 60);
+    
+    websiteLinkEl.href = WEBSITE_LINK;
+    whatsappContactLinkEl.href = 'https://wa.me/' + WHATSAPP_CONTACT;
+    whatsappCommunityLinkEl.href = WHATSAPP_COMMUNITY;
+    
+    quizTitleEl.textContent = `Test - ID: ${currentQuizId}`;
+    renderQuestionNav();
+    renderQuestion();
+
+    if (totalTimeInterval) clearInterval(totalTimeInterval);
+    if (questionTimeInterval) clearInterval(questionTimeInterval);
+    
+    totalTimeInterval = setInterval(updateTotalTimer, 1000);
+    questionTimeInterval = setInterval(updateQuestionTimer, 1000);
+}
+
+function updateTotalTimer() {
+    if (timeLeft > 0) {
+        timeLeft--;
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        totalTimerEl.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    } else {
+        clearInterval(totalTimeInterval);
+        submitTest(true);
+    }
+}
+
+function updateQuestionTimer() {
+    if (questionTimeLeft > 0) {
+        questionTimeLeft--;
+        questionTimerEl.textContent = `${questionTimeLeft}`;
+    } else {
+        questionTimeLeft = TIME_PER_MCQ;
+        navigateQuestion('next');
+    }
+}
+
+function renderQuestionNav() {
+    questionNavEl.innerHTML = '';
+    quizData.forEach((_, index) => {
+        const navItem = document.createElement('div');
+        navItem.classList.add('question-nav-item');
+        navItem.textContent = index + 1;
+        navItem.onclick = () => navigateQuestion(index);
+        
+        if (index === currentQuestion) {
+            navItem.classList.add('current');
+        } else if (userAnswers[index] !== null) {
+            navItem.classList.add('solved');
+        } else if (userAnswers.slice(0, index).some(ans => ans !== null) || index < currentQuestion) {
+             navItem.classList.add('visited');
+        }
+        
+        questionNavEl.appendChild(navItem);
+    });
+    updateProgressBar();
+}
+
+function updateProgressBar() {
+    const solvedCount = userAnswers.filter(answer => answer !== null).length;
+    const progress = (solvedCount / quizData.length) * 100;
+    quizProgressEl.style.width = `${progress}%`;
+}
+
+function renderQuestion() {
+    reasoningEl.style.display = 'none';
+    reasoningBtn.classList.add('disabled');
+    const question = quizData[currentQuestion];
+    questionTextEl.textContent = `${currentQuestion + 1}. ${question.question}`;
+    
+    optionsContainerEl.innerHTML = '';
+    question.options.forEach((option, index) => {
+        const optionEl = document.createElement('div');
+        optionEl.classList.add('option');
+        optionEl.textContent = option;
+        
+        const isAnswered = userAnswers[currentQuestion] !== null;
+
+        if (!isAnswered) {
+            optionEl.onclick = () => selectOption(index);
+        } else {
+            if (index === question.correctAnswer) {
+                optionEl.classList.add('correct');
+            } else if (index === userAnswers[currentQuestion]) {
+                optionEl.classList.add('incorrect');
+            }
+        }
+        
+        if (userAnswers[currentQuestion] === index) {
+            optionEl.classList.add('selected');
+        }
+
+        optionsContainerEl.appendChild(optionEl);
+    });
+    
+    questionTimeLeft = TIME_PER_MCQ;
+    questionTimerEl.textContent = `${questionTimeLeft}`;
+    renderQuestionNav();
+    
+    if (userAnswers[currentQuestion] !== null) {
+        reasoningBtn.classList.remove('disabled');
+    }
+}
+
+function selectOption(optionIndex) {
+    const question = quizData[currentQuestion];
+    userAnswers[currentQuestion] = optionIndex;
+    
+    reasoningBtn.classList.remove('disabled');
+    
+    const options = optionsContainerEl.querySelectorAll('.option');
+    options.forEach((option, index) => {
+        option.onclick = null;
+        option.classList.remove('selected', 'correct', 'incorrect');
+        
+        if (index === question.correctAnswer) {
+            option.classList.add('correct');
+        } else if (index === optionIndex) {
+            option.classList.add('incorrect');
+        }
+        
+        if (index === optionIndex) {
+             option.classList.add('selected');
+        }
+    });
+
+    renderQuestionNav();
+    
+    setTimeout(() => {
+        navigateQuestion('next');
+    }, 800);
+}
+
+function navigateQuestion(direction) {
+    const totalQuestions = quizData.length;
+    let nextIndex;
+
+    if (typeof direction === 'number') {
+        nextIndex = direction;
+    } else if (direction === 'next') {
+        nextIndex = (currentQuestion + 1) % totalQuestions;
+    } else if (direction === 'prev') {
+        nextIndex = (currentQuestion - 1 + totalQuestions) % totalQuestions;
+    } else {
+        return;
+    }
+
+    if (nextIndex === currentQuestion) return;
+    
+    currentQuestion = nextIndex;
+    renderQuestion();
+}
+
+function toggleReasoning() {
+    if (reasoningBtn.classList.contains('disabled')) return;
+    
+    const question = quizData[currentQuestion];
+    if (reasoningEl.style.display === 'block') {
+        reasoningEl.style.display = 'none';
+    } else {
+        reasoningTextEl.textContent = question.reasoning;
+        reasoningEl.style.display = 'block';
+    }
+}
+
+function submitTest(isTimeout = false) {
+    if (!isTimeout && !confirm('Are you sure you want to submit the quiz?')) {
+        return;
+    }
+    
+    clearInterval(totalTimeInterval);
+    clearInterval(questionTimeInterval);
+
+    let correct = 0;
+    let incorrect = 0;
+    let unanswered = 0;
+
+    quizData.forEach((question, index) => {
+        if (userAnswers[index] === null) {
+            unanswered++;
+        } else if (userAnswers[index] === question.correctAnswer) {
+            correct++;
+        } else {
+            incorrect++;
+        }
+    });
+
+    const totalQuestions = quizData.length;
+    const totalScore = (correct * MARK_PER_MCQ) - (incorrect * NEGATIVE_MARKING);
+    const totalMarks = totalQuestions * MARK_PER_MCQ;
+
+    correctCountEl.textContent = correct;
+    incorrectCountEl.textContent = incorrect;
+    unansweredCountEl.textContent = unanswered;
+    
+    const performancePercentage = (correct / totalQuestions) * 100;
+    performanceFillEl.style.width = `${performancePercentage}%`;
+
+    const savedStudentData = JSON.parse(localStorage.getItem('studentData') || '{}');
+    const lastAccessCode = localStorage.getItem('lastAccessCode') || 'N/A';
+    
+    let studentInfoHtml = '';
+    for (const [key, value] of Object.entries(savedStudentData)) {
+        studentInfoHtml += `<tr><td>${key}</td><td>${value}</td></tr>`;
+    }
+    studentInfoHtml += `<tr><td>Access Code Used</td><td>${lastAccessCode}</td></tr>`;
+    studentInfoTable.innerHTML = studentInfoHtml;
+
+    quizResultsTable.innerHTML = `
+        <tr><td>Quiz ID</td><td>${currentQuizId}</td></tr>
+        <tr><td>Total Questions</td><td>${totalQuestions}</td></tr>
+        <tr><td>Correct Answers</td><td>${correct}</td></tr>
+        <tr><td>Incorrect Answers</td><td>${incorrect}</td></tr>
+        <tr><td>Unanswered</td><td>${unanswered}</td></tr>
+        <tr><td>Your Score</td><td>${totalScore} / ${totalMarks}</td></tr>
+    `;
+
+    // --- NEW: SEND QUIZ RESULTS TO GOOGLE SHEET ---
+    if (lastAccessCode && lastAccessCode !== 'N/A') {
+        const resultsDataToSend = {
+            type: 'quiz_result',
+            accessCode: lastAccessCode,
+            quizId: currentQuizId,
+            totalQuestions: totalQuestions,
+            correct: correct,
+            incorrect: incorrect,
+            unanswered: unanswered,
+            totalScore: totalScore,
+            totalMarks: totalMarks,
+            studentName: savedStudentData['Student Name'] || 'Unknown' 
+        };
+
+        sendDataToSheet(resultsDataToSend)
+            .then(response => {
+                console.log('Sheet Results Update Response:', response);
+            })
+            .catch(error => {
+                console.error('Sheet Results Update Error:', error);
+                showQuizNotification('Submission Error', 'Failed to send results to the server sheet.', 'error');
+            });
+    }
+    // ----------------------------------------------------
+
+
+    const results = JSON.parse(localStorage.getItem('wcwQuizResults') || '[]');
+    results.push({
+        studentName: savedStudentData['Student Name'] || 'Unknown',
+        accessCode: lastAccessCode,
+        quizId: currentQuizId,
+        totalQuestions: totalQuestions,
+        correct: correct,
+        incorrect: incorrect,
+        unanswered: unanswered,
+        totalScore: totalScore,
+        totalMarks: totalMarks,
+        timestamp: new Date().toISOString()
+    });
+    localStorage.setItem('wcwQuizResults', JSON.stringify(results));
+    
+    showQuizNotification('Quiz Completed!', `Your score: ${totalScore}/${totalMarks}. Check the results page for details.`, 'info');
+    
+    showPage('results-page');
+}
+
+function restartTest() {
+    if (confirm('Are you sure you want to retake the full test? Your current progress will be lost.')) {
+        quizData = quizData_WCW_ENG_05;
+        currentQuestion = 0;
+        userAnswers = Array(quizData.length).fill(null);
+        timeLeft = quizData.length * TIME_PER_MCQ;
+        
+        showPage('quiz-page');
+        initQuiz();
+    }
+}
+
+function retakeIncorrect() {
+    const incorrectIndices = quizData.map((question, index) => {
+        const isIncorrect = userAnswers[index] !== null && 
+                            userAnswers[index] !== question.correctAnswer;
+        return isIncorrect ? index : -1;
+    }).filter(index => index !== -1);
+    
+    if (incorrectIndices.length === 0) {
+        showQuizNotification('No Incorrect Questions', 'You have no incorrect questions to retake!', 'info');
+        return;
+    }
+    
+    quizData = incorrectIndices.map(index => quizData_WCW_ENG_05[index]);
+    currentQuestion = 0;
+    userAnswers = Array(quizData.length).fill(null);
+    timeLeft = quizData.length * TIME_PER_MCQ;
+    
+    showPage('quiz-page');
+    initQuiz();
+}
+
+function viewAllMcqs() {
+    allMcqsList.innerHTML = '';
+    quizData_WCW_ENG_05.forEach((question, index) => {
+        const mcqItem = document.createElement('div');
+        mcqItem.classList.add('all-mcq-item');
+        mcqItem.innerHTML = `
+            <div class="question-text">${index + 1}. ${question.question}</div>
+            <div class="all-mcq-options">
+                ${question.options.map((option, optIndex) => `
+                    <div class="all-mcq-option ${optIndex === question.correctAnswer ? 'correct' : ''}">
+                        ${option}
+                    </div>
+                `).join('')}
+            </div>
+            <div class="all-mcq-reasoning">
+                <strong>Reasoning:</strong> ${question.reasoning}
+            </div>
+        `;
+        allMcqsList.appendChild(mcqItem);
+    });
+    showPage('all-mcqs-page');
+}</script>
